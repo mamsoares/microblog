@@ -1,10 +1,9 @@
-# Microblog em Ruby on Rails:
+# [Microblog em Ruby on Rails](http://polar-reef-5545.herokuapp.com/)
 
 ## Funcionalidades / UseCases
 
 #### O usuário pode:
 - Realizar o login;
-- Realizar o logout;
 
 #### O usuário logado pode:
 - Criar postagens;
@@ -13,10 +12,10 @@
 - Buscar por outros usuários;
 - Seguir outro usuário;
 - Deixar de seguir um usuário;
-- Receber notificação ao ser seguido por um usuário (Todo);
 - Ver um perfil criado;
 - Alterar dados do seu perfil;
 - Alterar sua senha;
+- Realizar o logout;
 
 #### O usuário logado e Não logado podem;
 - Ver um perfil criado através da Busca do Perfil;
@@ -49,10 +48,8 @@ rake db:seed
 rails s
 ```
 ## Todo
-* Como rodar a suite de testes
- - Ainda não foi implementado
+- Receber notificação ao ser seguido por um usuário (Todo);
+- Escrever testes
 
 ## Contribuições
-
-* Escrever testes
-* Revisão de código
+- Revisão de código
