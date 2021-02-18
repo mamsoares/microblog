@@ -1,0 +1,53 @@
+<div class="panel panel-primary">
+  	<div class="panel-heading">
+  	  <h2 class="panel-title">Perfil</h2>
+  	</div>
+  	<div class="panel-body">
+		<ul class="list-group">
+			<li class="list-group-item pull-center">
+				<div class="row">
+					<%= image_tag current_user.photo.url || "noimg.png", class: "img-user-detail" %>
+				</div>
+				<br />
+				<div class="row">    			
+					<div class="btn-group btn-group-justified">
+						<a href="/home/followers" class="btn btn-primary">
+						  Seguidores<br />
+						  <span class="badge">
+						  	<%= current_user.count_user_followers || 0 %>
+						  </span>
+					    </a>
+						<a href="/home/following" class="btn btn-primary">
+						  Seguindo<br />
+						  <span class="badge">
+						  	<%= current_user.following_users_count || 0 %>
+						  </span>
+					    </a>
+					</div>
+				</div>
+			</li>
+
+			<li class="list-group-item">
+				<%= current_user.email %>
+			</li>
+			<li class="list-group-item">
+             	<%= current_user.name || "Sem Nome"%>
+			</li>
+			<li class="list-group-item">
+				<%= current_user.username || "Sem nome" %>
+			</li>
+			<li class="list-group-item">
+             	<%= current_user.bio || "Sem biografia"%>
+			</li>			
+			<li class="list-group-item">
+	            <%= current_user.site || "Sem website"%>
+			</li>
+			<li class="list-group-item">
+             	<%= current_user.birth || "Sem data" %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!--a href="#" id="body" data-type="textarea" data-resource="post" data-name="body" data-url="/posts/1" data-original-title="Enter body">
+  <%#= textarea_format(@post.body) %>-->

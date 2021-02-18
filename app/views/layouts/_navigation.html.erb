@@ -1,0 +1,38 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "MicroBlog", root_url, class: "navbar-brand tit-navbar" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <form class="navbar-form navbar-left" role="search" action="/search_user/index">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar perfil" name="vname">
+          </div>
+          <button type="submit" class="btn btn-primary fa fa-search"></button>
+        </form>
+
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "", root_url, class: "fa fa-home fa-2x" %>
+          </li>      
+          <li>
+           <%= link_to('Alteração Básica', edit_user_registration_path) %>
+          </li>
+          <li>
+            <%= link_to('Sair', destroy_user_session_path, method: :get) %>
+          </li>
+        <% else %>
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/sign_up">Inscrever-se</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

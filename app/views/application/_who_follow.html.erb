@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  	<div class="panel-heading">
+  	  <h2 class="panel-title">Quem seguir?</h2>
+  	</div>
+  	<div class="panel-body">
+		<ul class="list-group">
+		 <%
+		 lstuser = User.limit(20).order("RANDOM()")
+		 if lstuser.any? 
+		 %> 
+		 	<% lstuser.each do |u| %> 
+			    <% if u.id != current_user.id %>
+			        <% unless current_user.following?(u) %>
+		         		<li class="list-group-item">
+		         			<%= link_to('', user_follows_path(u.to_param),  :"data-no-turbolink"=>true, :method => :post, class: 'btn-sm btn-primary fa fa-user-plus') %>
+		         			<small>
+		         			<%= u.email  %>
+		         			</small>
+		         		</li>
+		         	<% end %>
+	         	<% end %>
+         	<% end %>
+         <% else %>
+        	 <li><h3>Sem usuários</h3></li>
+         <% end %>
+        </ul>
+	</div>
+</div>

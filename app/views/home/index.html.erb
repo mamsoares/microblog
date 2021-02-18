@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-3">
+     <%= render "user_details" %>
+  </div>
+  <div class="col-lg-6">
+    <!-- 
+        Podemos escolher qualquer 
+        uma das funcoes abaixo 
+        para mostrar as mensagens
+    -->
+    <%#= flash_messages %>
+    <%= render 'layouts/flash_messages' %>
+
+    <div class="row">
+      <div class="col-lg-12">
+          <%= render "frm_micropost" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render "lst_microposts" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <%= render "who_follow" %>
+  </div>
+</div>

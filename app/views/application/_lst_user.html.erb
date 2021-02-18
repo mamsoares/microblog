@@ -1,0 +1,77 @@
+<div class="well">
+	<ul class="list-group">
+	 <% 
+	  	if params[:vname].present?
+			filtro = User.order(:created_at)
+			filtro = filtro.where("name = ? or username = ? or email = ? or site = ?", params[:vname], params[:vname], params[:vname], params[:vname]) 
+		end
+		if filtro.any?
+		 	filtro.each do |u| %>
+	     		<li class="list-group-item">
+	     		  <div class="row">
+	     			<div class="col-lg-2 pull-center">
+	     				<%= image_tag u.photo.url || "noimg.png", :class=>"img-timeline" %>
+	     			</div>
+
+	     			<!-- User Details Result Search -->
+	     			<div class="col-lg-10">
+	     				<blockquote>
+						    <p>
+							  	<%= (u.name  || "Sem nome") %>
+							  	- 
+							  	<%= time_ago_in_words(u.created_at || Time.zone.now) %>.
+						    </p>
+						    <p class="wraptext">
+	     						<%= (u.username  || "Sem username") %>
+	     					</p>						   <p class="wraptext">
+	     						<%= (u.bio  || "Sem biografia") %>
+	     					</p>						   <p class="wraptext">
+	     						<%= (u.site || "Sem website") %>
+	     					</p>
+						</blockquote>
+					</div>
+
+					<!-- Listing Micropost this User -->
+					<div class="col-lg-12">
+						<% lstpost = Micropost.order('created_at DESC').where('user_id = ?', u.id) %>
+						<% if lstpost.any?%>
+							<button class="btn btn-primary pull-left" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+							  Ver timeline
+							</button>
+							<div class="collapse" id="collapseExample">
+							  <div class="well">	 	
+								<ul class="list-group">
+						  			<% lstpost.each do |p| %>
+							     		<li class="list-group-item">
+							 				<blockquote>
+											    <small>
+												  	<%= (p.user.username || "Sem nome") %>
+												  	- 
+												  	<%= time_ago_in_words(p.created_at || Time.zone.now-10) %>.
+											    </small>
+											    <p class="wraptext">
+							 						<%= p.content %>
+							 					</p>
+											</blockquote>
+							 			</li>
+									<% end %>
+								</ul>
+							  </div>
+							</div>
+						<% end %>	
+					</div>
+
+
+				  </div>
+	     		</li>
+	     	<% end %>
+     <% else %>
+     	<li class="list-group-item">
+     		<h3>Nenhum resultado até o momento.</h3>
+     		<p>
+     			<%= link_to("Voltar", root_path, class:"btn btn-primary") %>
+			</p>
+     	</li>
+     <% end %>
+    </ul>
+</div>

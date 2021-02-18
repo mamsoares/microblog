@@ -1,0 +1,32 @@
+<% #enconding: utf-8 %>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+    <meta name="cache-control" content="max-age=29030400">
+    <meta name="accept-encoding" content="gzip, deflate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "MicroBlog" %></title>
+    <meta name="description" content="Desafio do Microblog.">
+    <meta name="author" content="Marcelo Soares">
+
+    <!-- definição dos stylesheets -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body class=<%= user_signed_in? ? 'bg-home' : 'bg-login'%>>
+
+    <%= render 'layouts/navigation' %>
+    <div class="container">
+      <%#= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+
+    <!-- definição dos javascripts -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>   
+</body>
+</html>

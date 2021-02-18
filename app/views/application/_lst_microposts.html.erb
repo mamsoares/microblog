@@ -1,0 +1,50 @@
+<div class="well">
+	<ul class="list-group">
+	<%
+	 lstpost = Micropost.order('created_at DESC').page(params[:page]).per(6)
+	 if lstpost.any?%>
+        <div class="pull-center">
+            <%= paginate lstpost %>
+        </div>
+
+	 	<% lstpost.each do |p| %>
+     		<li class="list-group-item">
+     			<div class="row">
+     			<div class="col-lg-2 pull-center">
+                    <%= image_tag (p.user.photo.url || "noimg.png"), class: "img-timeline" %>
+     			</div>
+
+     			<div class="col-lg-10">
+
+     				<blockquote>
+					    <small>
+						  	<%= p.user.username %>
+						  	- 
+						  	<%= time_ago_in_words(p.created_at || Time.zone.now) %>.
+						  	<%= p.created_at.to_s %>.
+					    </small>
+					    <p class="wraptext">
+     						<%= p.content %>
+     					</p>
+     					<% if p.user_id == current_user.id %>
+						  	<small>
+						  		<%= link_to ' Deletar', p, method: :delete, data: { confirm: 'Tem certeza?' }, class: "fa fa-trash" %>
+						  	</small>
+					  	<% end %>
+					</blockquote>
+
+				</div>
+				</div>
+     		</li>
+     	<% end %>
+     	<div class="pull-center">
+            <%= paginate lstpost %>
+        </div>
+     <% else %>
+     	<li class="list-group-item">
+            <span class="pull-center">
+     		<h3>Nenhum micropost até o momento.</h3></span>
+     	</li>
+     <% end %>
+    </ul>
+</div>

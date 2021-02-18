@@ -1,0 +1,6 @@
+<% flash.each do |key, msg| %>
+  <div id="msg" class="alert alert-<%= key == 'alert' ? 'danger' : 'success' %> alert-fixed fade in pull-center">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <h4><%= msg %></h4>
+  </div>
+<% end %>
