@@ -26,23 +26,25 @@ Obs: A Busca do perfil é feita por: nome ou username ou email ou site;
 - Listar quem o usuário está seguindo;
 - Listar seus seguidores;
  
-## VERSÕES UTILIZADAS
+## Versões Utilizadas
 
-* Ruby version 2.1.5 
-* Rails version 4.2.3
+- Ruby 2.1.5 
+- Rails 4.2.3
 
-## COMO UTILIZAR:
-* Database creation - SQLITE3
+## Como inicializar o projeto:
+- Clonar o projeto em um diretorio de sua preferência;
+
+- Criar o banco de dados - SQLITE3
 ```sh
 rake db:create && db:migrate
 ```
 
-* Database initialization
+- Popular o banco de dados
 ```sh
 rake db:seed
 ```
 
-* initialize server
+- Inicializar o servidor
 
 ```sh
 rails s
